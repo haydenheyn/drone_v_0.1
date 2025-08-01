@@ -1,32 +1,47 @@
-# _Sample project_
+# ESP32 Drone Flight Controller
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+A real-time flight controller built from scratch using the ESP32 microcontroller. This project implements sensor fusion, PID control, and real-time task management to stabilize a quadcopter using IMU data and output motor control signals.
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+## 🚀 Project Overview
+
+This flight controller is designed for a custom-built drone using:
+- **ESP32** as the core processor
+- **MPU6050** for accelerometer and gyroscope data
+- **FreeRTOS** for real-time multitasking
+- **Madgwick Filter** for sensor fusion
+- **PID Control Loops** for flight stabilization
+- **PWM Motor Control** for thrust regulation
+
+## 🧠 Features
+
+- Real-time orientation estimation (pitch, roll, yaw) using the Madgwick filter
+- Sensor data acquisition at 1 kHz from MPU6050
+- Tunable multi-axis PID control system
+- Modular FreeRTOS task structure (IMU, Control, Output, Debug)
+- UART serial telemetry for real-time monitoring
+- Customizable architecture for future expansion (altitude hold, GPS, etc.)
+
+## 📦 Architecture
 
 
+## ⚙️ Tech Stack
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+- **Platform:** ESP-IDF (C++), FreeRTOS
+- **MCU:** ESP32
+- **Sensor:** MPU6050 (I²C)
+- **Filter:** Madgwick AHRS Algorithm
+- **Control:** PID Loops (Roll, Pitch, Yaw)
 
-## Example folder contents
+## 📷 Demo
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+## PID
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
+## Electrical
 
-Below is short explanation of remaining files in the project folder.
+## Setup
 
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+## Flash instructions
+
+## 📁 File Structure
+
+
