@@ -1,2 +1,12 @@
-idf_component_register(SRCS "main.cpp"
-                    INCLUDE_DIRS ".")
+idf_component_register(SRCS 
+"main.cpp" 
+"led.cpp"
+"i2c_master.hpp" 
+"i2c_master.cpp" 
+"sensor.cpp"
+"sensor.hpp"
+"led_task.cpp" 
+"pid_task.cpp" 
+"imu_task.hpp"
+"imu_task.cpp"
+INCLUDE_DIRS ".")
