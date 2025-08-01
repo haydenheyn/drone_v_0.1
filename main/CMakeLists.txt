@@ -9,4 +9,7 @@ idf_component_register(SRCS
 "pid_task.cpp" 
 "imu_task.hpp"
 "imu_task.cpp"
+"pid_controller.hpp"
+"pid_controller.cpp"
+"pid_task.cpp"
 INCLUDE_DIRS ".")

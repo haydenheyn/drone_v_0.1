@@ -33,7 +33,7 @@ bool MPU6050Sensor::init(i2c_port_t i2c_port, uint8_t address) {
     }
 
     initialized = true;
-    ESP_LOGE(TAG, "MPU6050 initialized successfully");
+    ESP_LOGI(TAG, "MPU6050 initialized successfully");
     return true;
 }
 

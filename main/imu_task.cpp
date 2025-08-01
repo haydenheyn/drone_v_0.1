@@ -3,6 +3,7 @@
 #include "madgwick_filter.hpp"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "imu_queue.cpp"
 
 extern MPU6050Sensor sensor;
 
@@ -35,8 +36,12 @@ extern "C" void imu_task(void *pvParameter) {
         filter.get_euler(imu_packet.pitch, imu_packet.roll, imu_packet.yaw);
         imu_packet.timestamp = current_time;
         
-        printf("%.2f,%.2f,%.2f\n",imu_packet.pitch,imu_packet.roll,imu_packet.yaw);
+        
+        if (imu_data_queue != nullptr) {
+            xQueueSend(imu_data_queue, &imu_packet,0);
+        } 
 
+        //printf("%.2f,%.2f,%.2f\n",imu_packet.pitch,imu_packet.roll,imu_packet.yaw);
         vTaskDelay(imu_read_frequency);
     }
 }
