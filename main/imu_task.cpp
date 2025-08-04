@@ -4,22 +4,22 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "imu_queue.cpp"
+#include "common.hpp" 
 
 extern MPU6050Sensor sensor;
 
 
 // Define constants
-#define DEG_TO_RAD 0.0174532925f  // π / 180
+#define DEG_TO_RAD 0.0174532925f 
 
-// If imu_data_t is a custom struct, make sure it's included or defined:
-#include "common.hpp" // <- If you have this
+
 
 extern "C" void imu_task(void *pvParameter) {
     imu_data_t imu_packet;
     TickType_t last_wake_time = xTaskGetTickCount();
     const TickType_t imu_read_frequency = pdMS_TO_TICKS(4); // 250Hz = 4ms
 
-    espp::MadgwickFilter filter(0.3f);  // beta value
+    espp::MadgwickFilter filter(0.15f);  // beta value
 
     while (true) {
         sensor.readAccelerometer(imu_packet.acc);
@@ -42,6 +42,6 @@ extern "C" void imu_task(void *pvParameter) {
         } 
 
         //printf("%.2f,%.2f,%.2f\n",imu_packet.pitch,imu_packet.roll,imu_packet.yaw);
-        vTaskDelay(imu_read_frequency);
+        vTaskDelayUntil(&last_wake_time, imu_read_frequency);
     }
 }

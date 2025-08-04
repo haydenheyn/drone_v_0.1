@@ -70,16 +70,9 @@ public:
 
 
 extern "C" {
-   
     MPU6050Sensor sensor; 
-    
-    
     void app_main(void) {
-        ESP_LOGI(TAG, "Starting MPU6050 C++ Application");
-
-        
-
-        
+        ESP_LOGI(TAG, "Starting MPU6050 C++ Application"); 
         // Initialize I2C using C++ class
         if (!I2CMaster::init(I2C_MASTER_SDA_IO, I2C_MASTER_SCL_IO, 
                            I2C_MASTER_NUM, I2C_MASTER_FREQ_HZ)) {
@@ -92,10 +85,10 @@ extern "C" {
             ESP_LOGE(TAG, "Failed to initialize MPU6050 sensor");
             return;
         } 
-
         vTaskDelay(pdMS_TO_TICKS(100));
         xTaskCreate(&imu_task, "sensor_cpp", 4096, nullptr, 6, nullptr);
         xTaskCreatePinnedToCore(&pid_task, "pid_cpp", 4096, nullptr, 5, nullptr,1);
+        xTaskCreate(&motor_task, "motor_task.cpp", 4096, nullptr, 3,nullptr);
         ESP_LOGI(TAG, "All C++ tasks created successfully");
     }
 }

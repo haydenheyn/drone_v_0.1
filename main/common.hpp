@@ -12,4 +12,22 @@ typedef struct {
     uint32_t timestamp;
 } imu_data_t;
 
+
+
+
+typedef struct {
+    float pitch;
+    float roll;
+    float yaw;
+    float thrust;
+} pid_data_t;
+
+typedef struct {
+    float motor_one;
+    float motor_two;
+    float motor_three;
+    float motor_four;
+}  motor_pwm_data_t;
+
+
 #endif
