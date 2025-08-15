@@ -65,24 +65,6 @@ The flight controller employs a modular, real-time operating system approach wit
 | PWM Resolution | 16-bit |
 | Communication | UART (115200 baud), I²C (400kHz) |
 
-## Project Structure
-
-```
-├── main/
-│   ├── flight_controller.cpp    # Main application logic
-│   ├── imu_task.cpp            # Sensor data acquisition
-│   ├── control_task.cpp        # PID control implementation
-│   ├── motor_task.cpp          # PWM motor control
-│   └── telemetry_task.cpp      # Data transmission
-├── components/
-│   ├── madgwick_filter/        # AHRS algorithm implementation
-│   ├── pid_controller/         # Control system library
-│   └── mpu6050_driver/         # Hardware abstraction layer
-└── docs/
-    ├── hardware_design/        # Electrical schematics and PCB layouts
-    ├── control_theory/         # Algorithm documentation
-    └── testing_protocols/      # Validation procedures
-```
 
 ## Development Roadmap
 
