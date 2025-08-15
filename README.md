@@ -1,4 +1,4 @@
-# ESP32 Autonomous Drone Flight Controller
+# ESP32 Drone Flight Controller
 
 **Status: Active Development** | **Version: 0.1.0-alpha**
 
